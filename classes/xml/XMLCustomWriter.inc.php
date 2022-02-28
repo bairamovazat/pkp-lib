@@ -23,8 +23,9 @@ class XMLCustomWriter {
 	 * If $url is set, the DOCTYPE definition is treated as a PUBLIC
 	 * definition; $dtd should contain the ID, and $url should contain the
 	 * URL. Otherwise, $dtd should be the DTD name.
+	 * Edited by Shamil K.
 	 */
-	function &createDocument($type = null, $dtd = null, $url = null) {
+	function &createDocument($type = null, $dtd = null, $url = null, $utf = false) {
 		$version = '1.0';
 		if (class_exists('DOMImplementation')) {
 			// Use the new (PHP 5.x) DOM
@@ -37,7 +38,8 @@ class XMLCustomWriter {
 				$doc = $impl->createDocument($version, '');
 			}
 			// ensure we are outputting UTF-8
-			$doc->encoding = 'UTF-8';
+			// Edited by Shamil K.
+			if (!$utf) $doc->encoding = 'UTF-8'; else  $doc->encoding = 'UCS-2LE';
 		} else {
 			// Use the XMLNode class
 			$doc = new XMLNode();

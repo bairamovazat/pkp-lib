@@ -430,12 +430,19 @@ class FileManager {
 	}
 
 	/**
+	 * Edited by Shamil K: added eps as image.
 	 * Returns file extension associated with the given image type,
 	 * or false if the type does not belong to a recognized image type.
 	 * @param $type string
 	 */
 	function getImageExtension($type) {
 		switch ($type) {
+			case 'image/eps':
+				return '.eps';
+			case 'application/octet-stream':
+				return '.eps';
+			case 'application/postscript':
+				return '.eps';
 			case 'image/gif':
 				return '.gif';
 			case 'image/jpeg':

@@ -66,6 +66,21 @@ class Submission extends DataObject {
 	//
 
 	/**
+	 * Edited by Shamil K. 04.05.2018
+	 * Return first author
+	 * @param $lastOnly boolean return lastname only (default false)
+	 * @return string
+	 */
+	function getFirstAuthorDAO() {
+		$authors = $this->getAuthors();
+		if (is_array($authors) && !empty($authors)) {
+			$author = $authors[0];
+			return $author;
+		} else {
+			return null;
+		}
+	}
+	/**
 	 * Return first author
 	 * @param $lastOnly boolean return lastname only (default false)
 	 * @return string
